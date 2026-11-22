@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ember Pact — a duel card game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+
+  <section id="screen-title" class="screen">
+    <div class="title-inner">
+      <div class="title-emblem">▲&nbsp;≈&nbsp;✿&nbsp;◆</div>
+      <h1>EMBER PACT</h1>
+      <p class="tagline">A duel of cunning and ember against the Ashen Warden.</p>
+      <div class="title-buttons">
+        <button id="btn-duel" class="btn big">⚔ DUEL</button>
+        <button id="btn-how" class="btn big secondary">HOW TO PLAY</button>
+      </div>
+      <p id="record-line" class="record">Duels won 0 · lost 0</p>
+      <div class="suit-chips">
+        <span class="chip flame">▲ Flame</span>
+        <span class="chip tide">≈ Tide</span>
+        <span class="chip thorn">✿ Thorn</span>
+        <span class="chip stone">◆ Stone</span>
+      </div>
+      <p class="keys">Keys: 1–7 play a card · Space end turn · Esc cancel · M mute · Enter duel</p>
+    </div>
+  </section>
+
+  <section id="screen-table" class="screen hidden">
+    <div class="topbar">
+      <span id="turn-label">Turn 1</span>
+      <span id="damage-label">Damage dealt 0</span>
+      <span id="deck-label">Decks — You 27 · Warden 27</span>
+      <span class="spacer"></span>
+      <button id="btn-mute" class="btn small">🔊 Sound: On</button>
+      <button id="btn-restart" class="btn small">↻ Restart</button>
+      <button id="btn-surrender" class="btn small danger">🏳 Surrender</button>
+    </div>
+
+    <div class="foe-row">
+      <div id="warden-portrait" class="portrait foe" title="Click to attack the Warden">
+        <div class="portrait-glyph">👁</div>
+        <div class="portrait-name">Ashen Warden</div>
+        <div class="life"><span id="warden-life">30</span> ❤</div>
+        <div id="warden-hand-count" class="hand-count">🂠 ×3</div>
+      </div>
+      <div id="warden-board" class="board"></div>
+    </div>
+
+    <div class="mid-row">
+      <div id="log" class="log"></div>
+      <div class="mid-controls">
+        <div id="ember-pips"></div>
+        <button id="btn-end-turn" class="btn big">END TURN ⏎</button>
+        <div id="hint" class="hint">Your turn — play a card or attack.</div>
+      </div>
+    </div>
+
+    <div class="you-row">
+      <div id="you-board" class="board"></div>
+      <div id="you-portrait" class="portrait you">
+        <div class="portrait-glyph">🔥</div>
+        <div class="portrait-name">You</div>
+        <div class="life"><span id="you-life">30</span> ❤</div>
+      </div>
+    </div>
+
+    <div id="you-hand" class="hand"></div>
+  </section>
+
+  <section id="screen-end" class="screen hidden">
+    <div class="end-inner">
+      <h1 id="end-title">VICTORY</h1>
+      <p id="end-subtitle"></p>
+      <div id="end-stats" class="stats-grid"></div>
+      <div class="title-buttons">
+        <button id="btn-again" class="btn big">DUEL AGAIN</button>
+        <button id="btn-title" class="btn big secondary">BACK TO TITLE</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="overlay-how" class="overlay hidden">
+    <div class="how-card">
+      <h2>HOW TO PLAY</h2>
+      <p><b>Goal:</b> reduce the Ashen Warden from 30 life to 0 before it does the same to you.</p>
+      <p><b>Ember:</b> each turn grants ember equal to the turn number (up to 10) and refills it. Playing a card spends its cost.</p>
+      <p><b>Creatures:</b> click a hand card twice to summon it. A new creature has summoning sickness — it attacks from your next turn. Click your ready creature, then an enemy creature or the Warden's portrait, to attack. Creatures trade damage both ways.</p>
+      <p><b>Spells:</b> Ember Burst deals 3 to any target (click the target). Healing Rain restores 5 of your life. Root Wisdom draws 2 cards. Quake Slam deals 2 to all enemy creatures.</p>
+      <p><b>Decks:</b> 30 cards each, opening hand 3, one draw per turn, hand max 7. An empty deck still demands its draw — fatigue damage rises 1, 2, 3…, so every duel ends.</p>
+      <p><b>Houses:</b> Flame ▲ hits hard · Tide ≈ endures · Thorn ✿ holds the line · Stone ◆ shakes the board.</p>
+      <p class="keys">Keys: 1–7 select / play a hand card · Space end turn · Esc cancel or close · M mute · Enter duel</p>
+      <button id="btn-how-close" class="btn big">GOT IT</button>
+    </div>
+  </div>
+
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+{"description":"Ember Pact — a turn-based duel card game vs the Ashen Warden, built for the make.fun best-card-game bounty.","name":"ember-pact","private":true,"scripts":{"dossier":"node main.ts","serve":"node serve.ts","test":"node --test tests/logic.test.mjs"},"type":"module","version":"1.0.0"}
